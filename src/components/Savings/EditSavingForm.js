@@ -15,19 +15,19 @@ import "./styles/form.css";
 
 class EditSavingForm extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
-        const savings = this.props.savings;
+        const savings = this.props.savings
+        const savingInfo = this.props.savings.value.saving
 
         this.state = {
-            date: moment(savings.value.date),
-            day: moment(savings.value.date).day,
-            goalAmount: savings.value.goalAmount,
-            savingAmount: savings.value.savingAmount,
-            savingFor: savings.value.savingFor,
-            comments: savings.value.comments,
-            goalAchieved: savings.value.goalAchieved,
-            cardColor: savings.value.cardColor,
+            date: moment(savingInfo.date),
+            day: moment(savingInfo.date).day,
+            goalAmount: savingInfo.goalAmount,
+            savingFor: savingInfo.savingFor,
+            comments: savingInfo.comments,
+            goalAchieved: savingInfo.goalAchieved,
+            cardColor: savingInfo.cardColor,
             uid: this.props.user.uid,
             dataSaved: false,
             displayColorPicker: false
@@ -44,11 +44,10 @@ class EditSavingForm extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        firebase.db.ref(`savingsTable/${this.props.user.uid}/${this.props.savings.key}`).update({
+        firebase.db.ref(`savingsTable/${this.props.user.uid}/${this.props.savings.key}/saving`).update({
             date: this.state.date.format("MM/DD/YYYY"),
             day: moment(this.state.date.format("MM/DD/YYYY")).day(),
             goalAmount: this.state.goalAmount,
-            savingAmount: Math.ceil(this.state.savingAmount),
             savingFor: this.state.savingFor,
             comments: this.state.comments,
             goalAchieved: this.state.goalAchieved,
@@ -184,22 +183,6 @@ class EditSavingForm extends Component {
                                 name="goalAmount"
                                 onChange={this.handleChange.bind(this)}
                                 value={this.state.goalAmount}
-                                style={this.props.settings.mode === "night" ? inputNightMode : inputDayMode}
-                            />
-                        </div>
-                    </div>
-                    <div className="form-group row">
-                        <label className="col-sm-3 col-xs-6 col-form-label">
-                            <span>Saving Amount</span>
-                        </label>
-                        <div className="col-sm-9 col-xs-6">
-                            <input
-                                className="form-control"
-                                required
-                                type="number"
-                                name="savingAmount"
-                                onChange={this.handleChange.bind(this)}
-                                value={this.state.savingAmount}
                                 style={this.props.settings.mode === "night" ? inputNightMode : inputDayMode}
                             />
                         </div>

@@ -44,7 +44,7 @@ class App extends Component {
             defaultCategoriesNames: null,
             defaultCategoriesColors: null,
             settings: null,
-            savings: null
+            savings: null,
         };
     }
 

@@ -15,11 +15,11 @@ const SavingsLayout = props => {
 
     if (savings && currentUser) {
         const eachSaving = utils.eachExpense(savings);
-        const thisUsersSavings = utils.currentUsersExpenses(eachSaving, currentUser);
+        const thisUsersSavings = utils.currentUsersSaving(eachSaving, currentUser);
 
         if (thisUsersSavings.length) {
             var abc = thisUsersSavings.map(function (elem, i) {
-                return <SavingsCard savings={elem} authUser={currentUser} settings={settings} />;
+                return <SavingsCard key={i} savings={elem} authUser={currentUser} settings={settings} />;
             });
 
             return <div className="col-sm-12">{abc}</div>;

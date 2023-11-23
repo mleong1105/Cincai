@@ -52,6 +52,7 @@ class AddSavingForm extends Component {
             this.state.cardColor,
             moment(this.state.date.format("MM/DD/YYYY")).day()
         );
+
         // reset form once saved
         this.setState({
             date: moment(),
