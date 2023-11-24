@@ -139,7 +139,8 @@ const Cards = props => {
                                         className={`fa ${utils.setCurrencyIcon(settings.currency)}`}
                                         aria-hidden="true"
                                     />{" "}
-                                    {totalExpenses.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
+                                    {/* display 2 decimal places values */}
+                                    {totalExpenses.toFixed(2).toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                                 </p>
                             </div>
                         </div>
@@ -153,15 +154,16 @@ const Cards = props => {
                                         className={`fa ${utils.setCurrencyIcon(settings.currency)}`}
                                         aria-hidden="true"
                                     />{" "}
-                                    {totalExpensesThisYear.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
+                                     {/* display 2 decimal places values */}
+                                    {totalExpensesThisYear.toFixed(2).toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                                 </p>
                             </div>
                         </div>
                         {window.screen.width > 1024 ? (
                             <BarChartAllMonths expenses={expenses} authUser={authUser} />
                         ) : (
-                                <span />
-                            )}
+                            <span />
+                        )}
                     </div>
                     <div className="col-sm-6 col-md-4 col-lg-3">
                         <div className="card card3" style={cards.card3}>
@@ -182,7 +184,8 @@ const Cards = props => {
                                         className={`fa ${utils.setCurrencyIcon(settings.currency)}`}
                                         aria-hidden="true"
                                     />{" "}
-                                    {totalExpensesThisMonth.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
+                                     {/* display 2 decimal places values */}
+                                    {totalExpensesThisMonth.toFixed(2).toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                                 </p>
                                 <p className="limitText">
                                     {totalExpensesThisMonth > settings.monthLimit ? (
@@ -190,8 +193,8 @@ const Cards = props => {
                                             Monthly <br /> Limit <br /> exceeded{" "}
                                         </span>
                                     ) : (
-                                            ""
-                                        )}
+                                        ""
+                                    )}
                                 </p>
                             </div>
                         </div>
@@ -199,8 +202,8 @@ const Cards = props => {
                             {window.screen.width > 1024 ? (
                                 <LineChartExpenseTimeline expenses={expenses} authUser={authUser} settings={settings} />
                             ) : (
-                                    <span />
-                                )}
+                                <span />
+                            )}
                         </div>
                     </div>
                     <div className="col-sm-6 col-md-4 col-lg-3">
@@ -212,7 +215,8 @@ const Cards = props => {
                                         className={`fa ${utils.setCurrencyIcon(settings.currency)}`}
                                         aria-hidden="true"
                                     />{" "}
-                                    {totalExpensesThisWeek.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
+                                     {/* display 2 decimal places values */}
+                                    {totalExpensesThisWeek.toFixed(2).toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                                 </p>
                             </div>
                         </div>
@@ -226,7 +230,8 @@ const Cards = props => {
                                         className={`fa ${utils.setCurrencyIcon(settings.currency)}`}
                                         aria-hidden="true"
                                     />{" "}
-                                    {totalExpensesToday.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
+                                     {/* display 2 decimal places values */}
+                                    {totalExpensesToday.toFixed(2).toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                                 </p>
                             </div>
                         </div>
@@ -286,7 +291,8 @@ const Cards = props => {
                                                     className={`fa ${utils.setCurrencyIcon(settings.currency)}`}
                                                     aria-hidden="true"
                                                 />{" "}
-                                                {totalExpenses.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
+                                                {/* display 2 decimal places values */}
+                                                {totalExpenses.toFixed(2).toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                                             </p>
                                         </div>
                                     </div>
@@ -302,7 +308,8 @@ const Cards = props => {
                                                     className={`fa ${utils.setCurrencyIcon(settings.currency)}`}
                                                     aria-hidden="true"
                                                 />{" "}
-                                                {totalExpensesThisYear.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
+                                                 {/* display 2 decimal places values */}
+                                                {totalExpensesThisYear.toFixed(2).toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                                             </p>
                                         </div>
                                     </div>
@@ -328,7 +335,8 @@ const Cards = props => {
                                                     className={`fa ${utils.setCurrencyIcon(settings.currency)}`}
                                                     aria-hidden="true"
                                                 />{" "}
-                                                {totalExpensesThisMonth
+                                                 {/* display 2 decimal places values */}
+                                                {totalExpensesThisMonth.toFixed(2)
                                                     .toString()
                                                     .replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                                             </p>
@@ -338,8 +346,8 @@ const Cards = props => {
                                                         Monthly <br /> Limit <br /> exceeded{" "}
                                                     </span>
                                                 ) : (
-                                                        ""
-                                                    )}
+                                                    ""
+                                                )}
                                             </p>
                                         </div>
                                     </div>
@@ -355,7 +363,8 @@ const Cards = props => {
                                                     className={`fa ${utils.setCurrencyIcon(settings.currency)}`}
                                                     aria-hidden="true"
                                                 />{" "}
-                                                {totalExpensesThisWeek.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
+                                                 {/* display 2 decimal places values */}
+                                                {totalExpensesThisWeek.toFixed(2).toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                                             </p>
                                         </div>
                                     </div>
@@ -371,7 +380,8 @@ const Cards = props => {
                                                     className={`fa ${utils.setCurrencyIcon(settings.currency)}`}
                                                     aria-hidden="true"
                                                 />{" "}
-                                                {totalExpensesToday.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
+                                                 {/* display 2 decimal places values */}
+                                                {totalExpensesToday.toFixed(2).toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                                             </p>
                                         </div>
                                     </div>

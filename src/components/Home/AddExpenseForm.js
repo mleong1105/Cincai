@@ -30,13 +30,30 @@ class AddExpenseForm extends Component {
         this.handelDateChange = this.handelDateChange.bind(this);
     }
 
+    roundExpense(value) {
+        // Determine the third decimal place
+        const thirdDecimalPlace = Math.floor(value * 1000) % 10;
+    
+        // Round based on the third decimal place
+        if (thirdDecimalPlace >= 5) {
+            // Round up to the nearest 0.01
+            return Math.ceil(value * 100) / 100;
+        } else {
+            // Round down to the nearest 0.01
+            return Math.floor(value * 100) / 100;
+        }
+    }
+
     handleSubmit(event) {
         event.preventDefault();
+
+        // Ensure expense is rounded before updating
+        const roundedExpense = this.roundExpense(parseFloat(this.state.expense * this.props.convertedCurrency));
 
         db.doCreateExpense(
             this.state.uid,
             $(".date").val(),
-            Math.ceil(this.state.expense * this.props.convertedCurrency),
+            roundedExpense,
             this.state.category,
             this.state.comments,
             moment($(".date").val()).day()
@@ -168,23 +185,23 @@ class AddExpenseForm extends Component {
                     {this.state.dataSaved ? (
                         <span className="bg-success success-msg"> Data saved successfully</span>
                     ) : (
-                            <span />
-                        )}
+                        <span />
+                    )}
                     {this.state.expense > 0 && this.state.date && this.state.category ? (
                         <button className="btn btn-primary float-right" type="submit">
                             save
                         </button>
                     ) : (
-                            <div>
-                                <div style={validationBox}>
-                                    <div> Expense : should be greater than 0 </div>
-                                    <div> Date : should be selected </div>
-                                </div>
-                                <button className="btn btn-primary float-right" disabled type="submit">
-                                    save
-                            </button>
+                        <div>
+                            <div style={validationBox}>
+                                <div> Expense : should be greater than 0 </div>
+                                <div> Date : should be selected </div>
                             </div>
-                        )}
+                            <button className="btn btn-primary float-right" disabled type="submit">
+                                save
+                            </button>
+                        </div>
+                    )}
                 </form>
             );
         } else {

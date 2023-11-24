@@ -62,7 +62,8 @@ const TotalCard = props => {
                         </h3>
                         <p style={window.screen.width > 720 ? cardStyleDesktop : cardStyleMobile} className="card-text">
                             <i className={`fa ${utils.setCurrencyIcon(settings.currency)}`} aria-hidden="true" />{" "}
-                            {totalExpenses.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
+                            {/* display 2 decimal places values */}
+                            {totalExpenses.toFixed(2).toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                         </p>
                     </div>
                 </div>
