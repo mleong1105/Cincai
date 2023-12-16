@@ -115,7 +115,7 @@ class CategoryTotalCard extends Component {
                                     aria-hidden="true"
                                 />
                                 <div style={categoryExpense}>
-                                    {el.value.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
+                                    {el.value.toFixed(2).toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                                 </div>
                             </span>
                         );
@@ -130,7 +130,7 @@ class CategoryTotalCard extends Component {
                                         aria-hidden="true"
                                     />
                                     <div style={categoryExpense}>
-                                        {el.value.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
+                                        {el.value.toFixed(2).toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                                     </div>
                                 </span>
                             </Link>
