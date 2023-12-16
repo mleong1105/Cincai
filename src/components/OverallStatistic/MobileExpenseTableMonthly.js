@@ -4,12 +4,13 @@ import Loader from "../Common/Loader";
 
 import * as utils from "../Util";
 
-const MobileExpenseTable = props => {
+const MobileExpenseTableMonthly = props => {
     const expenses = props.expenses;
     const currentUser = props.authUser;
-    const dateSelected = props.date;
+    const selectedMonth = props.month;
+    const selectedYear = props.year;
 
-    if (!expenses || !currentUser || !dateSelected) {
+    if (!expenses || !currentUser || !selectedMonth || !selectedYear) {
         return (
             <div>
                 <Loader />
@@ -17,19 +18,24 @@ const MobileExpenseTable = props => {
         );
     }
 
-    if (expenses && currentUser && dateSelected) {
+    if (expenses && currentUser && selectedMonth && selectedYear) {
         const eachExpense = utils.eachExpense(expenses);
-        const usersExpensesInDate = utils.expensesInDate(eachExpense, currentUser, dateSelected);
+        const usersExpensesInSelectedMonthAndYear = utils.expensesinMonthAndYear(
+            eachExpense,
+            currentUser,
+            selectedMonth,
+            selectedYear
+        );
 
-        if (usersExpensesInDate.length) {
-            return usersExpensesInDate.map(function (elem, i) {
+        if (usersExpensesInSelectedMonthAndYear.length) {
+            return usersExpensesInSelectedMonthAndYear.map(function (elem, i) {
                 return (
                     <MobileExpenseRow
                         user={props.authUser}
                         expense={elem}
                         num={i}
                         key={i}
-                        expenseId={usersExpensesInDate[i].key}
+                        expenseId={usersExpensesInSelectedMonthAndYear[i].key}
                         settings={props.settings}
                         convertedCurrency={props.convertedCurrency}
                     />
@@ -49,4 +55,4 @@ const MobileExpenseTable = props => {
     }
 };
 
-export default MobileExpenseTable;
+export default MobileExpenseTableMonthly;

@@ -1,27 +1,23 @@
 import React, { useState, useEffect, Component } from "react";
 import Loader from "../Common/Loader";
-import DatePicker from "react-datepicker";
 import moment from "moment";
-import TotalCardMonthly from "../MonthView/TotalCard";
-import CategoryTotalCardMonthly from "../MonthView/CategoryTotalCard";
-import DoughnutChart from "../MonthView/DoughnutChart";
-import DoughnutChartDaily from "../DailyView/DoughnutChart";
-import DoughnutChartDir from "./DoughnutChart";
-import LineChartExpenseTimeline from "../MonthView/LineChartTimeline";
-import MonthLimitWarning from "../MonthView/MonthLimitWarning";
-import MobileExpenseTable from "./MobileExpenseTable";
-import GenerateExcel from "../MonthView/GenerateExcel";
-import MonthExpenseTable from "../MonthView/MonthExpenseTable";
+import TotalCardMonthly from "./TotalCard";
+import CategoryTotalCardMonthly from "./CategoryTotalCard";
+import DoughnutChart from "./DoughnutChartMonthly";
+import DoughnutChartDir from "./DoughnutChartDaily";
+import LineChartExpenseTimeline from "./LineChartTimeline";
+import MonthLimitWarning from "./MonthLimitWarning";
+import MobileExpenseTableDaily from "./MobileExpenseTableDaily";
+import MobileExpenseTableMonthly from "./MobileExpenseTableMonthly";
+import MonthExpenseTable from "./MonthExpenseTable";
+import DailyExpenseTable from "./DailyExpenseTable";
+import GenerateExcelDaily from "./GenerateExcelDaily";
+import GenerateExcelMonthly from "./GenerateExcelMonthly";
 import * as utils from "../Util";
 import * as analytics from "./../../analytics/analytics";
-import DailyTotalCalender from "../MonthView/DailyTotalCalender";
 import DailyTotalCalenderDir from "./DailyTotalCalender";
-import ExpenseTable from "../DailyView/ExpenseTable";
-import ExpenseTableDir from "./ExpenseTable";
-import GenerateExcelDaily from "./GenerateExcel";
 import TotalCardDaily from "../DailyView/TotalCard";
-import CategoryTotalCardDaily from "../DailyView/CategoryTotalCard";
-import { expensesInDate } from "../Util";
+import CategoryTotalCardDaily from "./CategoryTotalCardDaily";
 
 class OverallStatistic extends Component {
   constructor(props) {
@@ -211,15 +207,15 @@ class OverallStatistic extends Component {
       margin: "15px 0",
     };
 
-    const nmBgForChartsBottom ={
+    const nmBgForChartsBottom = {
       backgroundColor: this.props.settings
         ? this.props.settings.mode === "night"
           ? "#2C3034"
           : "#EDF0EF"
         : "#EDF0EF",
       padding: "15px",
-      marginBottom : "15px"
-    }
+      marginBottom: "15px",
+    };
 
     const nmBgForChartsTab = {
       padding: "15px",
@@ -310,68 +306,6 @@ class OverallStatistic extends Component {
       color: "#495057",
       border: "1px solid #fff",
       height: "auto",
-    };
-
-    const topRightCol = {};
-
-    const tabSelection = {
-      border: "1px solid #fff",
-      background: white,
-    };
-
-    const tabDiv = {
-      backgroundColor: this.props.settings
-        ? this.props.settings.mode === "night"
-          ? "#2C3034"
-          : "#EDF0EF"
-        : "#EDF0EF",
-      color: this.props.settings
-        ? this.props.settings.mode === "night"
-          ? "#fff"
-          : "#000"
-        : "#000",
-      margin: "15px 0",
-      width: "20%",
-      textAlign: "left",
-    };
-
-    const tabHeadder = {
-      float: "left",
-    };
-
-    const tabText = {
-      display: "block",
-      color: "white",
-      textAlign: "center",
-      padding: "16px",
-      maxHeight: "100%",
-      maxWidth: "100%",
-    };
-
-    const ulStyle = {
-      listStyleType: "none",
-      margin: "0",
-      padding: "0",
-      overflow: "hidden",
-      maxHeight: "100%",
-      maxWidth: "100%",
-    };
-
-    const tabUL = {
-      backgroundColor: this.props.settings
-        ? this.props.settings.mode === "night"
-          ? "#2C3034"
-          : "#EDF0EF"
-        : "#EDF0EF",
-      color: this.props.settings
-        ? this.props.settings.mode === "night"
-          ? "#fff"
-          : "#000"
-        : "#000",
-      margin: "15px 0",
-      width: "20%",
-      textAlign: "left",
-      listStyleType: "none",
     };
 
     const handleDataFromChild = (data) => {
@@ -560,7 +494,9 @@ class OverallStatistic extends Component {
                 <div
                   className="col-sm-12 mobileNoPadding"
                   style={
-                    this.props.settings.mode === "night" ? nmBgForChartsBottom : pad15
+                    this.props.settings.mode === "night"
+                      ? nmBgForChartsBottom
+                      : pad15
                   }
                 >
                   <DoughnutChartDir
@@ -574,7 +510,9 @@ class OverallStatistic extends Component {
               ) : (
                 <div
                   style={
-                    this.props.settings.mode === "night" ? nmBgForChartsBottom : pad15
+                    this.props.settings.mode === "night"
+                      ? nmBgForChartsBottom
+                      : pad15
                   }
                   className="mobileNoPadding"
                 >
@@ -594,19 +532,28 @@ class OverallStatistic extends Component {
                   />
                 </div>
               )}
+              {this.state.currentMode === "daily" ? (
+                <GenerateExcelDaily
+                  expenses={this.props.expenses}
+                  date={this.state.updateDoughnutDate}
+                  authUser={this.props.user}
+                  settings={this.props.settings}
+                />
+              ) : (
+                <GenerateExcelMonthly
+                  expenses={this.props.expenses}
+                  authUser={this.props.user}
+                  month={this.state.month}
+                  year={this.state.year}
+                  settings={this.props.settings}
+                  style={{ marginTop: "100px" }}
+                />
+              )}
 
-              <GenerateExcel
-                expenses={this.props.expenses}
-                authUser={this.props.user}
-                month={this.state.month}
-                year={this.state.year}
-                settings={this.props.settings}
-                style={{ marginTop: "100px" }}
-              />
               {this.state.convertedCurrency ? (
                 this.state.currentMode === "daily" ? (
                   window.screen.width > 720 ? (
-                    <ExpenseTableDir
+                    <DailyExpenseTable
                       expenses={this.props.expenses}
                       date={this.state.updateDoughnutDate}
                       authUser={this.props.user}
@@ -614,7 +561,7 @@ class OverallStatistic extends Component {
                       convertedCurrency={this.state.convertedCurrency}
                     />
                   ) : (
-                    <MobileExpenseTable
+                    <MobileExpenseTableDaily
                       expenses={this.props.expenses}
                       authUser={this.props.user}
                       date={this.state.updateDoughnutDate}
@@ -632,7 +579,7 @@ class OverallStatistic extends Component {
                     convertedCurrency={this.state.convertedCurrency}
                   />
                 ) : (
-                  <MobileExpenseTable
+                  <MobileExpenseTableMonthly
                     expenses={this.props.expenses}
                     authUser={this.props.user}
                     month={this.state.month}

@@ -1,10 +1,10 @@
 import React from "react";
-import ExportToExcel from "./../Common/ExportToExcel";
-import Loader from "./../Common/Loader";
+import ExportToExcel from "../Common/ExportToExcel";
+import Loader from "../Common/Loader";
 
 import * as utils from "../Util";
 
-const GenerateExcel = props => {
+const GenerateExcelDaily = props => {
     let expenses = props.expenses;
     let currentUser = props.authUser;
     let dateSelected = props.date;
@@ -38,4 +38,4 @@ const GenerateExcel = props => {
     }
 };
 
-export default GenerateExcel;
+export default GenerateExcelDaily;
