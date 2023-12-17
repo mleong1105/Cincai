@@ -103,16 +103,27 @@ class FilterViewPage extends Component {
     }
 
     handleChange(e) {
-        // If you are using babel, you can use ES 6 dictionary syntax { [e.target.name] = e.target.value }
-        var change = {};
-        // Check if the input starts with a negative sign
-        if (e.target.value.startsWith('-')) {
-            // If it does, ignore the input
-            return;
+        try {
+            // If you are using babel, you can use ES 6 dictionary syntax { [e.target.name] = e.target.value }
+            var change = {};
+
+            // Check if the input starts with a negative sign
+            if (e.target.value.startsWith('-')) {
+                // If it does, ignore the input or handle it differently
+                return;
+            }
+
+            // Remove any leading zeros
+            const cleanedValue = e.target.value.replace(/^0+/, '');
+
+            change[e.target.name] = cleanedValue.length === 0 ? "00" : cleanedValue;
+
+            this.setState(change);
+        } catch (e) {
+            console.log(e);
         }
-        change[e.target.name] = e.target.value.length === 1 ? "00" : e.target.value;
-        this.setState(change);
     }
+
 
     handleFromDateSelect(fromdate) {
         this.setState({
