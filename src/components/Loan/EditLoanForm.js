@@ -37,17 +37,23 @@ class EditLoanForm extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        firebase.db.ref(`loanTable/${this.props.user.uid}/${this.props.loan.key}`).update({
-            date: this.state.date.format("MM/DD/YYYY"),
-            day: moment(this.state.date.format("MM/DD/YYYY")).day(),
-            amount: this.state.amount,
-            loanType: this.state.loanType,
-            person: this.state.person,
-            reason: this.state.reason,
-            status: this.state.status
-        });
-
-        $("#closePopup").click();
+        try {
+            firebase.db.ref(`loanTable/${this.props.user.uid}/${this.props.loan.key}`).update({
+                date: this.state.date.format("MM/DD/YYYY"),
+                day: moment(this.state.date.format("MM/DD/YYYY")).day(),
+                amount: this.state.amount,
+                loanType: this.state.loanType,
+                person: this.state.person,
+                reason: this.state.reason,
+                status: this.state.status
+            });
+    
+            $("#closePopup").click();
+    
+            alert("Loan updated successfully!");
+        } catch (error) {
+            alert("Error: Failed to update loan!\n" + error);
+        }
     }
 
     handleChange(e) {

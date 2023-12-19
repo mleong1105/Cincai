@@ -24,7 +24,13 @@ class SavingsCard extends Component {
     handleClick(e) {
         var message = "Once deleted you cannot get back this record , are you sure you want to delete";
         if (window.confirm(message)) {
-            firebase.db.ref(`savingsTable/${this.props.authUser.uid}/${this.props.savings.key}`).remove();
+            try {
+                firebase.db.ref(`savingsTable/${this.props.authUser.uid}/${this.props.savings.key}`).remove();
+
+                alert("Saving deleted successfully!");
+            } catch (error) {
+                alert("Error: Failed to delete saving!\n" + error);
+            }
         }
     }
 

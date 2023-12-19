@@ -33,14 +33,20 @@ class AddExpenseForm extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        db.doCreateExpense(
-            this.state.uid,
-            $(".date").val(),
-            Math.ceil(this.state.expense * this.props.convertedCurrency),
-            this.state.category,
-            this.state.comments,
-            moment($(".date").val()).day()
-        );
+        try {
+            db.doCreateExpense(
+                this.state.uid,
+                $(".date").val(),
+                Math.ceil(this.state.expense * this.props.convertedCurrency),
+                this.state.category,
+                this.state.comments,
+                moment($(".date").val()).day()
+            );
+    
+            alert("New expense added successfully!");
+        } catch (error) {
+            alert("Error: Failed to add new expense!\n" + error);
+        }
         // reset form once saved
         this.setState({
             date: moment(),

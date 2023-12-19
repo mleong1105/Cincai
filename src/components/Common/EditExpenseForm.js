@@ -35,15 +35,21 @@ class EditExpenseForm extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        firebase.db.ref(`expenseTable/${this.props.user.uid}/${this.props.expense.key}`).update({
-            date: this.state.date.format("MM/DD/YYYY"),
-            day: moment(this.state.date.format("MM/DD/YYYY")).day(),
-            expense: Math.ceil(this.state.expense * this.props.convertedCurrency),
-            category: this.state.category,
-            comments: this.state.comments
-        });
-
-        $("#closePopup").click();
+        try {
+            firebase.db.ref(`expenseTable/${this.props.user.uid}/${this.props.expense.key}`).update({
+                date: this.state.date.format("MM/DD/YYYY"),
+                day: moment(this.state.date.format("MM/DD/YYYY")).day(),
+                expense: Math.ceil(this.state.expense * this.props.convertedCurrency),
+                category: this.state.category,
+                comments: this.state.comments
+            });
+    
+            $("#closePopup").click();
+            
+            alert("Expense updated successfully!");
+        } catch (error) {
+            alert("Error: Failed to update expense!\n" + error);
+        }
     }
 
     handleChange(e) {
