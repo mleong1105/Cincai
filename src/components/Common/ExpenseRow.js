@@ -90,7 +90,7 @@ class ExpenseRow extends Component {
                 </td>
                 <td data-th="Expense">
                     <i className={`fa ${utils.setCurrencyIcon(this.props.settings.currency)}`} aria-hidden="true" />{" "}
-                    {this.props.expense.value.expense.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
+                    {this.props.expense.value.expense.toFixed(2).toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                 </td>
                 <td data-th="Category">
                     {catName}{" "}
