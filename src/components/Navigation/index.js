@@ -43,6 +43,13 @@ const NavigationAuth = props => {
                         Home
                     </Link>
                     <Link
+                        className={`nav-link ${window.location.pathname === "/overall-view" ? "active" : "inactive"}`}
+                        to={routes.OVERALLSTAT}
+                        style={props.settings.mode === "night" ? nightModeLink : dayModeLink}
+                    >
+                        OverallStat
+                    </Link>
+                    {/* <Link
                         className={`nav-link ${window.location.pathname === "/month-view" ? "active" : "inactive"}`}
                         to={routes.MONTH_VIEW}
                         style={props.settings.mode === "night" ? nightModeLink : dayModeLink}
@@ -55,7 +62,7 @@ const NavigationAuth = props => {
                         style={props.settings.mode === "night" ? nightModeLink : dayModeLink}
                     >
                         Daily
-                    </Link>
+                    </Link> */}
                     <Link
                         className={`nav-link ${window.location.pathname === "/filter-view" ? "active" : "inactive"}`}
                         to={routes.FILTER_VIEW}
@@ -117,6 +124,14 @@ const NavigationAuth = props => {
                         Home
                     </Link>
                     <Link
+                        className={`nav-link ${window.location.pathname === "/overall-stat" ? "active" : "inactive"}`}
+                        to={routes.OVERALLSTAT}
+                        onClick={burgerToggle}
+                        style={props.settings.mode === "night" ? nightModeLink : dayModeLink}
+                    >
+                        OverallStat
+                    </Link>
+                    {/* <Link
                         className={`nav-link ${window.location.pathname === "/month-view" ? "active" : "inactive"}`}
                         to={routes.MONTH_VIEW}
                         onClick={burgerToggle}
@@ -131,7 +146,7 @@ const NavigationAuth = props => {
                         style={props.settings.mode === "night" ? nightModeLink : dayModeLink}
                     >
                         Daily
-                    </Link>
+                    </Link> */}
                     <Link
                         className={`nav-link ${window.location.pathname === "/filter-view" ? "active" : "inactive"}`}
                         to={routes.FILTER_VIEW}
