@@ -176,7 +176,7 @@ class SettingsPage extends Component {
                 <div className="container-fluid" style={styleFromSettings}>
                     <div className="row">
                         <div className="col-sm-6" style={centerHeight}>
-                            <img src={this.props.user.photoURL || url} style={userImage} alt="something's wrong" />
+                            <img src={this.props.user.photoURL || url} style={userImage} alt="No image selected" />
                             <div className="row">
                                 <div className="col-sm-10 col-md-10 col-lg-10" style={center}>
                                     <div className="card card3" style={this.props.cards.card3}>
@@ -555,7 +555,7 @@ class SettingsPage extends Component {
                                     <span />
                                 )}
                                 <button className="btn btn-primary float-right" type="submit">
-                                    save
+                                    Save
                                 </button>
                             </form>
                         </div>
@@ -578,7 +578,7 @@ class SettingsPage extends Component {
                                                 <p className="card-title">Getting your registered email</p>
                                                 <hr />
                                                 <p className="card-title">
-                                                    {"we're checking wether you're a verified user"}
+                                                    {"we're checking whether you're a verified user"}
                                                 </p>
                                             </div>
                                         </div>
