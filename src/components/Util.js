@@ -1,3 +1,4 @@
+import { each } from "jquery";
 import moment from "moment";
 
 export const eachExpense = expenses => {
@@ -10,6 +11,10 @@ export const eachExpense = expenses => {
             // to get a value that is either negative, positive, or zero.
             return new Date(b.value.date) - new Date(a.value.date);
         });
+};
+
+export const currentUsersSaving = (eachExpense, currentUser) => {
+    return eachExpense.filter(elem => elem.value.saving.uid === currentUser.uid);
 };
 
 export const currentUsersExpenses = (eachExpense, currentUser) => {
