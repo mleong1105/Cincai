@@ -43,9 +43,8 @@ const doCreateSavingsTable = (
     day,
     goalAchieved,
     cardColor,
-    key
 ) => {
-    db.ref(`savingsTable/${uid}/${key}`).set({
+    db.ref(`savingsTable/${uid}/${key}/saving`).set({
         uid,
         date,
         goalAmount,
@@ -56,12 +55,35 @@ const doCreateSavingsTable = (
         cardColor,
         day
     });
+
+    const recordAmount = savingAmount
+    db.ref(`savingsTable/${uid}/${key}/record/${key}`).set({
+        uid,
+        date,
+        recordAmount,
+        day,
+    });
 };
 
 const doCreateSaving = (uid, date, goalAmount, savingAmount, savingFor, comments, goalAchieved, cardColor, day) => {
-    db.ref(`savingsTable/${uid}`)
-        .push()
-        .set({ uid, date, goalAmount, savingAmount, savingFor, comments, goalAchieved, cardColor, day });
+    const savingsId = db.ref(`savingsTable/${uid}`).push().key
+    const uniqueId = db.ref(`savingsTable/${uid}/${savingsId}`).push().key
+    const recordAmount = savingAmount
+
+    db.ref(`savingsTable/${uid}/${savingsId}`)
+        .set({ 
+            saving: {uid, date, goalAmount, savingAmount, savingFor, comments, goalAchieved, cardColor, day},
+            record: {
+                [uniqueId]: {uid, date, recordAmount, day}
+            }
+        });
+};
+
+const doCreateSavingRecord = (savingsId, uid, date, recordAmount, day) => {
+    const uniqueId = db.ref(`savingsTable/${uid}/${savingsId}/record`).push().key
+
+    db.ref(`savingsTable/${uid}/${savingsId}/record/${uniqueId}`)
+        .set({ uid, date, recordAmount, day});
 };
 
 const onceGetExpenses = () => db.ref("expenses").once("value");
@@ -122,5 +144,6 @@ export {
     doCreateLoanTable,
     doCreateSettingsForUser,
     doCreateSavingsTable,
-    doCreateSaving
+    doCreateSaving,
+    doCreateSavingRecord
 };

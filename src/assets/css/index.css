@@ -134,8 +134,18 @@ ul {
     cursor: pointer;
 }
 
+.view-btn {
+    background: transparent;
+    color: #ffa500;
+    margin: 0;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
 .edit-btn-mobile,
-.delete-mobile-btn {
+.delete-mobile-btn,
+.view-mobile-btn {
     padding: 5px 25px;
 }
 
