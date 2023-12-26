@@ -11,6 +11,17 @@ const config = {
     measurementId: "G-1L4BQJ0PXW"
 };
 
+// const config = {
+//     apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
+//     authDomain: "cincai-testing.firebaseapp.com",
+//     databaseURL: "https://cincai-testing-default-rtdb.firebaseio.com",
+//     projectId: "cincai-testing",
+//     storageBucket: "cincai-testing.appspot.com",
+//     messagingSenderId: "900544346852",
+//     appId: "1:900544346852:web:e93a6c3b90febb60644af1",
+//     measurementId: "G-VS1ZRTVVGN"
+//   };
+
 if (!firebase.apps.length) {
     firebase.initializeApp(config);
 }

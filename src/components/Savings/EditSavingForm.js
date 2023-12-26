@@ -17,7 +17,6 @@ class EditSavingForm extends Component {
     constructor(props) {
         super(props)
 
-        const savings = this.props.savings
         const savingInfo = this.props.savings.value.saving
 
         this.state = {
