@@ -78,8 +78,21 @@ class AddSavingForm extends Component {
     handleChange(e) {
         // If you are using babel, you can use ES 6 dictionary syntax { [e.target.name] = e.target.value }
         var change = {};
-        change[e.target.name] = e.target.value;
-        this.setState(change);
+        var value = e.target.value;
+
+        if(e.target.name === 'savingAmount') {
+            if (value === "" || (parseFloat(value) >= 0 && /^\d*\.?\d*$/.test(value))) {
+                change[e.target.name] = value;
+                this.setState(change);
+            }
+            else {
+                alert("Please do not insert negative value to the saving amount input.")
+            }
+        }
+        else {
+            change[e.target.name] = value;
+            this.setState(change);
+        }
     }
 
     handelDateChange(date) {
