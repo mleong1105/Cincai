@@ -46,16 +46,22 @@ class AddExpenseForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        // Ensure expense is rounded before updating
-        const roundedExpense = this.roundExpense(parseFloat(this.state.expense * this.props.convertedCurrency));
-        db.doCreateExpense(
-            this.state.uid,
-            $(".date").val(),
-            roundedExpense,
-            this.state.category,
-            this.state.comments,
-            moment($(".date").val()).day()
-        );
+        try {
+            // Ensure expense is rounded before updating
+            const roundedExpense = this.roundExpense(parseFloat(this.state.expense * this.props.convertedCurrency));
+            db.doCreateExpense(
+                this.state.uid,
+                $(".date").val(),
+                roundedExpense,
+                this.state.category,
+                this.state.comments,
+                moment($(".date").val()).day()
+            );
+    
+            alert("New expense added successfully!");
+        } catch (error) {
+            alert("Error: Failed to add new expense!\n" + error);
+        }
         // reset form once saved
         this.setState({
             date: moment(),

@@ -34,16 +34,22 @@ class AddLoanForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        db.doCreateLoan(
-            this.state.uid,
-            $(".date").val(),
-            this.state.amount,
-            this.state.loanType,
-            this.state.reason,
-            this.state.person,
-            moment($(".date").val()).day(),
-            this.state.status
-        );
+        try {
+            db.doCreateLoan(
+                this.state.uid,
+                $(".date").val(),
+                this.state.amount,
+                this.state.loanType,
+                this.state.reason,
+                this.state.person,
+                moment($(".date").val()).day(),
+                this.state.status
+            );
+    
+            alert("New loan updated successfully!");
+        } catch (error) {
+            alert("Error: Failed to add new loan!\n" + error);
+        }
         // reset form once saved
         this.setState({
             date: moment(),

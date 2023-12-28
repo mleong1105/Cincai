@@ -41,17 +41,23 @@ class AddSavingForm extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        db.doCreateSaving(
-            this.state.uid,
-            this.state.date.format("MM/DD/YYYY"),
-            this.state.goalAmount,
-            Math.ceil(this.state.savingAmount),
-            this.state.savingFor,
-            this.state.comments,
-            this.state.goalAchieved,
-            this.state.cardColor,
-            moment(this.state.date.format("MM/DD/YYYY")).day()
-        );
+        try {
+            db.doCreateSaving(
+                this.state.uid,
+                this.state.date.format("MM/DD/YYYY"),
+                this.state.goalAmount,
+                Math.ceil(this.state.savingAmount),
+                this.state.savingFor,
+                this.state.comments,
+                this.state.goalAchieved,
+                this.state.cardColor,
+                moment(this.state.date.format("MM/DD/YYYY")).day()
+            );
+    
+            alert("New saving added successfully!");
+        } catch (error) {
+            alert("Error: Failed to add new saving!\n" + error);
+        }
         
         // reset form once saved
         this.setState({

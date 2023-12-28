@@ -48,17 +48,23 @@ class EditExpenseForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        // Ensure expense is rounded before updating
-        const roundedExpense = this.roundExpense(parseFloat(this.state.expense * this.props.convertedCurrency));
-        firebase.db.ref(`expenseTable/${this.props.user.uid}/${this.props.expense.key}`).update({
-            date: this.state.date.format("MM/DD/YYYY"),
-            day: moment(this.state.date.format("MM/DD/YYYY")).day(),
-            expense: roundedExpense,
-            category: this.state.category,
-            comments: this.state.comments
-        });
+        try {
+            // Ensure expense is rounded before updating
+            const roundedExpense = this.roundExpense(parseFloat(this.state.expense * this.props.convertedCurrency));
+            firebase.db.ref(`expenseTable/${this.props.user.uid}/${this.props.expense.key}`).update({
+                date: this.state.date.format("MM/DD/YYYY"),
+                day: moment(this.state.date.format("MM/DD/YYYY")).day(),
+                expense: roundedExpense,
+                category: this.state.category,
+                comments: this.state.comments
+            });
+    
+            $("#closePopup").click();
 
-        $("#closePopup").click();
+            alert("Expense updated successfully!");
+        } catch (error) {
+            alert("Error: Failed to update expense!\n" + error);
+        }
     }
 
     handleChange(e) {
