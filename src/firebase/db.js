@@ -53,10 +53,11 @@ const doCreateSavingsTable = (
         comments,
         goalAchieved,
         cardColor,
-        day
+        day,
     });
 
     const recordAmount = savingAmount
+
     db.ref(`savingsTable/${uid}/${key}/record/${key}`).set({
         uid,
         date,

@@ -79,7 +79,8 @@ class SavingsCard extends Component {
     }
 
     render() {
-        const savings = this.props.savings.value.saving;        const settings = this.props.settings;
+        const savings = this.props.savings.value.saving;
+        const settings = this.props.settings;
         const currentUser = this.props.authUser;
 
         if (!savings || !currentUser || !settings) {
@@ -172,7 +173,7 @@ class SavingsCard extends Component {
                                         <button className="delete-btn" onClick={this.handleClick}>
                                             <i className="fa fa-trash-o" aria-hidden="true" />
                                         </button>
-                                        
+                    
                                         <button className="view-btn" onClick={this.toggleRecordPopup.bind(this)}>
                                             <i className="fa fa-list action-icons" aria-hidden="true" />
                                         </button>

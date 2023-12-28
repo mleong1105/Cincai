@@ -15,7 +15,7 @@ import "./styles/form.css";
 
 class EditSavingForm extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
         const savingInfo = this.props.savings.value.saving
 
@@ -26,7 +26,8 @@ class EditSavingForm extends Component {
             savingFor: savingInfo.savingFor,
             comments: savingInfo.comments,
             goalAchieved: savingInfo.goalAchieved,
-            cardColor: savingInfo.cardColor,            uid: this.props.user.uid,
+            cardColor: savingInfo.cardColor,
+            uid: this.props.user.uid,
             dataSaved: false,
             displayColorPicker: false
         };
@@ -42,7 +43,8 @@ class EditSavingForm extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        firebase.db.ref(`savingsTable/${this.props.user.uid}/${this.props.savings.key}/saving`).update({            date: this.state.date.format("MM/DD/YYYY"),
+        firebase.db.ref(`savingsTable/${this.props.user.uid}/${this.props.savings.key}/saving`).update({
+            date: this.state.date.format("MM/DD/YYYY"),
             day: moment(this.state.date.format("MM/DD/YYYY")).day(),
             goalAmount: this.state.goalAmount,
             savingFor: this.state.savingFor,
