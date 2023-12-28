@@ -13,59 +13,6 @@
 `Username : horelam864@visignal.com`
 `password : abcd1234`
 
-## SCREENSHOTS
-
-#### Mobile Views
-[![Mobile Screens](https://i.postimg.cc/c1jZTXVX/mobile-Views.png)](https://sad-shirley-6ef62f.netlify.com/)
-
-#### Night Mode Home Page
-[![Night Mode Home](https://i.postimg.cc/mZVBMTwf/Home1.png)](https://sad-shirley-6ef62f.netlify.com/)
-
-#### Month View Page Night Mode
-[![Night Mode Month](https://i.postimg.cc/jqvn50nC/MONTHLY-NIGHT-MODE.png)](https://sad-shirley-6ef62f.netlify.com/)
-
-#### Daily View Night Mode
-[![Daily View](https://i.postimg.cc/BQQDcQfx/DAILY-NIGHT-MODE.png)](https://sad-shirley-6ef62f.netlify.com/)
-
-#### Statistics Night Mode
-[![Statistics](https://i.postimg.cc/1tm5hXHB/STATISTICS-NIGHT-MODE2.png)](https://sad-shirley-6ef62f.netlify.com/)
-
-#### Saving Goals Night Mode
-[![Savings](https://i.postimg.cc/WbBNpX8h/SAVINGS-NIGHT-MODE.png)](https://sad-shirley-6ef62f.netlify.com/)
-
-#### Settings Night Mode
-[![Settings](https://i.postimg.cc/CLBMVWj3/SETTINGS-NIGHT-MODE.png)](https://sad-shirley-6ef62f.netlify.com/)
-
-#### Filter Night Mode
-[![Filter Page](https://i.postimg.cc/kM2rDJ8Y/FILTER-NIGHT-MODE.png)](https://sad-shirley-6ef62f.netlify.com/)
-
-#### Home Page Day Mode
-[![Home Page](https://i.postimg.cc/25XXmXdt/HOMEDAY4.png)](https://sad-shirley-6ef62f.netlify.com/)
-
-#### Monthly View Day Mode
-[![Monthly View](https://i.postimg.cc/qqmNZyH2/MONTH-VIEW-DAY.png)](https://sad-shirley-6ef62f.netlify.com/)
-
-#### Daily View Day Mode
-[![Daily View](https://i.postimg.cc/cCT3yPwg/DAILY-DAY-MODE.png)](https://sad-shirley-6ef62f.netlify.com/)
-
-#### Statistics Day Mode
-[![Statistics](https://i.postimg.cc/Wz43rzqz/STATISTICS-DAY-MODE.png)](https://sad-shirley-6ef62f.netlify.com/)
-
-#### Loan Page Day Mode
-[![Loan Page](https://s25.postimg.cc/s16nf3kxb/loan.png)](https://sad-shirley-6ef62f.netlify.com/)
-
-#### Saving Goals Day Mode
-[![Savings](https://i.postimg.cc/fRYwVmq5/SAVINGS-DAY-MODE.png)](https://sad-shirley-6ef62f.netlify.com/)
-
-#### Settings Day Mode
-[![Settings](https://i.postimg.cc/59k9TxF5/SETTINGS-DAY-MODE.png)](https://sad-shirley-6ef62f.netlify.com/)
-
-#### Login Screen
-[![Login Page](https://s25.postimg.cc/jvolgx1tb/login.png)](https://sad-shirley-6ef62f.netlify.com/)
-
-#### Calendar Component
-[![Calendar Component](https://i.postimg.cc/DyZ1TZnM/calendar-component.png)](https://sad-shirley-6ef62f.netlify.com/)
-
 ## SETUP
 
 #### 1. Setting Up Firebase 
@@ -74,7 +21,6 @@
 - Create a new firebase project 
 
   [![Add Firebase Project](https://i.postimg.cc/TwvMnjTk/add-Firebase.png)](https://i.postimg.cc/TwvMnjTk/add-Firebase.png)
-  [![Add Firebase Project](https://i.postimg.cc/fL74C3LM/add-project.png)](https://i.postimg.cc/fL74C3LM/add-project.png)
   
 - Be Sure to Choose Realtime Database , and not firestore
 
@@ -114,7 +60,7 @@
   
  2. Setup Repo Locally
  
-    `git clone https://github.com/YogeshPrasanna/expense-manager-react.git`
+    `git clone https://github.com/mleong1105/Cincai.git`
 
 ### `npm install`
 
