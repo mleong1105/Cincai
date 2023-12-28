@@ -43,17 +43,23 @@ class EditSavingForm extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        firebase.db.ref(`savingsTable/${this.props.user.uid}/${this.props.savings.key}/saving`).update({
-            date: this.state.date.format("MM/DD/YYYY"),
-            day: moment(this.state.date.format("MM/DD/YYYY")).day(),
-            goalAmount: this.state.goalAmount,
-            savingFor: this.state.savingFor,
-            comments: this.state.comments,
-            goalAchieved: this.state.goalAchieved,
-            cardColor: this.state.cardColor
-        });
-
-        $("#closePopup").click();
+        try {
+            firebase.db.ref(`savingsTable/${this.props.user.uid}/${this.props.savings.key}/saving`).update({
+                date: this.state.date.format("MM/DD/YYYY"),
+                day: moment(this.state.date.format("MM/DD/YYYY")).day(),
+                goalAmount: this.state.goalAmount,
+                savingFor: this.state.savingFor,
+                comments: this.state.comments,
+                goalAchieved: this.state.goalAchieved,
+                cardColor: this.state.cardColor
+            });
+    
+            $("#closePopup").click();
+    
+            alert("Saving updated successfully!");
+        } catch (error) {
+            alert("Error: Failed to update saving!\n" + error);
+        }
     }
 
     handleClick() {
