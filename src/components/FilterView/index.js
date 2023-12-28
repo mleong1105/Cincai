@@ -103,11 +103,27 @@ class FilterViewPage extends Component {
     }
 
     handleChange(e) {
-        // If you are using babel, you can use ES 6 dictionary syntax { [e.target.name] = e.target.value }
-        var change = {};
-        change[e.target.name] = e.target.value.length === 1 ? "00" : e.target.value;
-        this.setState(change);
+        try {
+            // If you are using babel, you can use ES 6 dictionary syntax { [e.target.name] = e.target.value }
+            var change = {};
+
+            // Check if the input starts with a negative sign
+            if (e.target.value.startsWith('-')) {
+                // If it does, ignore the input or handle it differently
+                return;
+            }
+
+            // Remove any leading zeros
+            const cleanedValue = e.target.value.replace(/^0+/, '');
+
+            change[e.target.name] = cleanedValue.length === 0 ? "00" : cleanedValue;
+
+            this.setState(change);
+        } catch (e) {
+            console.log(e);
+        }
     }
+
 
     handleFromDateSelect(fromdate) {
         this.setState({
@@ -350,21 +366,21 @@ class FilterViewPage extends Component {
                                         convertedCurrency={this.state.convertedCurrency}
                                     />
                                 ) : (
-                                        <MobileExpenseTable
-                                            expenses={this.props.expenses}
-                                            expensefrom={this.state.expensefrom}
-                                            expenseto={this.state.expenseto}
-                                            fromdate={this.state.fromdate.format("MM/DD/YYYY")}
-                                            todate={this.state.todate.format("MM/DD/YYYY")}
-                                            category={this.state.category}
-                                            authUser={this.props.user}
-                                            settings={this.props.settings}
-                                            convertedCurrency={this.state.convertedCurrency}
-                                        />
-                                    )
+                                    <MobileExpenseTable
+                                        expenses={this.props.expenses}
+                                        expensefrom={this.state.expensefrom}
+                                        expenseto={this.state.expenseto}
+                                        fromdate={this.state.fromdate.format("MM/DD/YYYY")}
+                                        todate={this.state.todate.format("MM/DD/YYYY")}
+                                        category={this.state.category}
+                                        authUser={this.props.user}
+                                        settings={this.props.settings}
+                                        convertedCurrency={this.state.convertedCurrency}
+                                    />
+                                )
                             ) : (
-                                    <Loader />
-                                )}
+                                <Loader />
+                            )}
                         </div>
                     </div>
                 </div>

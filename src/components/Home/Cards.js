@@ -139,7 +139,7 @@ const Cards = props => {
                                         className={`fa ${utils.setCurrencyIcon(settings.currency)}`}
                                         aria-hidden="true"
                                     />{" "}
-                                    {totalExpenses.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
+                                    {totalExpenses.toFixed(2).toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                                 </p>
                             </div>
                         </div>
@@ -153,7 +153,7 @@ const Cards = props => {
                                         className={`fa ${utils.setCurrencyIcon(settings.currency)}`}
                                         aria-hidden="true"
                                     />{" "}
-                                    {totalExpensesThisYear.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
+                                    {totalExpensesThisYear.toFixed(2).toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                                 </p>
                             </div>
                         </div>
@@ -182,7 +182,7 @@ const Cards = props => {
                                         className={`fa ${utils.setCurrencyIcon(settings.currency)}`}
                                         aria-hidden="true"
                                     />{" "}
-                                    {totalExpensesThisMonth.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
+                                    {totalExpensesThisMonth.toFixed(2).toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                                 </p>
                                 <p className="limitText">
                                     {totalExpensesThisMonth > settings.monthLimit ? (
@@ -212,7 +212,7 @@ const Cards = props => {
                                         className={`fa ${utils.setCurrencyIcon(settings.currency)}`}
                                         aria-hidden="true"
                                     />{" "}
-                                    {totalExpensesThisWeek.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
+                                    {totalExpensesThisWeek.toFixed(2).toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                                 </p>
                             </div>
                         </div>
@@ -226,7 +226,7 @@ const Cards = props => {
                                         className={`fa ${utils.setCurrencyIcon(settings.currency)}`}
                                         aria-hidden="true"
                                     />{" "}
-                                    {totalExpensesToday.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
+                                    {totalExpensesToday.toFixed(2).toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                                 </p>
                             </div>
                         </div>
@@ -286,7 +286,7 @@ const Cards = props => {
                                                     className={`fa ${utils.setCurrencyIcon(settings.currency)}`}
                                                     aria-hidden="true"
                                                 />{" "}
-                                                {totalExpenses.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
+                                                {totalExpenses.toFixed(2).toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                                             </p>
                                         </div>
                                     </div>
@@ -302,7 +302,7 @@ const Cards = props => {
                                                     className={`fa ${utils.setCurrencyIcon(settings.currency)}`}
                                                     aria-hidden="true"
                                                 />{" "}
-                                                {totalExpensesThisYear.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
+                                                {totalExpensesThisYear.toFixed(2).toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                                             </p>
                                         </div>
                                     </div>
@@ -355,7 +355,7 @@ const Cards = props => {
                                                     className={`fa ${utils.setCurrencyIcon(settings.currency)}`}
                                                     aria-hidden="true"
                                                 />{" "}
-                                                {totalExpensesThisWeek.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
+                                                {totalExpensesThisWeek.toFixed(2).toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                                             </p>
                                         </div>
                                     </div>
@@ -371,7 +371,7 @@ const Cards = props => {
                                                     className={`fa ${utils.setCurrencyIcon(settings.currency)}`}
                                                     aria-hidden="true"
                                                 />{" "}
-                                                {totalExpensesToday.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
+                                                {totalExpensesToday.toFixed(2).toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                                             </p>
                                         </div>
                                     </div>

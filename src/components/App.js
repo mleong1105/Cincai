@@ -26,6 +26,8 @@ import LoanPage from "./Loan/index";
 import SettingsPage from "./Settings/index";
 import SavingsPage from "./Savings/index";
 import ErrorPage from "./Error/index";
+import OverallStatistic from "./OverallStatistic";
+
 
 import * as routes from "../constants/routes";
 import * as db from "../firebase/db";
@@ -334,6 +336,18 @@ class App extends Component {
                                 cards={cards}
                             />
                         )}
+                    />
+                    <Route
+                         exact
+                         path={routes.OVERALLSTAT}
+                         component={() => (
+                             <OverallStatistic
+                                 user={this.state.authUser}
+                                 expenses={this.state.expenses}
+                                 settings={this.state.settings}
+                                 cards={cards}
+                             />
+                         )}
                     />
                     <Route
                         exact

@@ -20,7 +20,7 @@ class EditExpenseForm extends Component {
         this.state = {
             date: moment(expense.value.date),
             day: moment(expense.value.date).day,
-            expense: expense.value.expense,
+            expense: this.roundExpense(parseFloat(expense.value.expense)), // Round the expense here
             category: expense.value.category,
             comments: expense.value.comments,
             uid: this.props.user.uid,
@@ -32,13 +32,28 @@ class EditExpenseForm extends Component {
         this.handelDateChange = this.handelDateChange.bind(this);
     }
 
+    roundExpense(value) {
+        // Determine the third decimal place
+        const thirdDecimalPlace = Math.floor(value * 1000) % 10;
+    
+        // Round based on the third decimal place
+        if (thirdDecimalPlace >= 5) {
+            // Round up to the nearest 0.01
+            return Math.ceil(value * 100) / 100;
+        } else {
+            // Round down to the nearest 0.01
+            return Math.floor(value * 100) / 100;
+        }
+    }
+
     handleSubmit(event) {
         event.preventDefault();
-
+        // Ensure expense is rounded before updating
+        const roundedExpense = this.roundExpense(parseFloat(this.state.expense * this.props.convertedCurrency));
         firebase.db.ref(`expenseTable/${this.props.user.uid}/${this.props.expense.key}`).update({
             date: this.state.date.format("MM/DD/YYYY"),
             day: moment(this.state.date.format("MM/DD/YYYY")).day(),
-            expense: Math.ceil(this.state.expense * this.props.convertedCurrency),
+            expense: roundedExpense,
             category: this.state.category,
             comments: this.state.comments
         });

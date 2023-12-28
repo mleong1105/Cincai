@@ -173,9 +173,9 @@ class SavingsCard extends Component {
                                         <button className="delete-btn" onClick={this.handleClick}>
                                             <i className="fa fa-trash-o" aria-hidden="true" />
                                         </button>
-
+                    
                                         <button className="view-btn" onClick={this.toggleRecordPopup.bind(this)}>
-                                            <i className="fa fa-edit action-icons" aria-hidden="true" />
+                                            <i className="fa fa-list action-icons" aria-hidden="true" />
                                         </button>
                                     </label>
                                 </div>
